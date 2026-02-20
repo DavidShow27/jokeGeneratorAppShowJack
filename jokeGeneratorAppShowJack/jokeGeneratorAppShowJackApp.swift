@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct jokeGeneratorAppShowJackApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
+    
 }
