@@ -10,9 +10,22 @@
 		5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jokeGeneratorAppShowJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5372768E2F4898CE0062369E /* jokeGeneratorAppShowJack */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */,
+			);
 			path = jokeGeneratorAppShowJack;
 			sourceTree = "<group>";
 		};
@@ -253,6 +266,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = jokeGeneratorAppShowJack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +298,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = jokeGeneratorAppShowJack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
