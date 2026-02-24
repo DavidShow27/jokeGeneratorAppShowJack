@@ -11,14 +11,45 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var auth: AuthViewModel
+    @State var joke: String = ""
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Logged In")
+
+            HStack(spacing: 20) {
             
-            Button("Sign Out") {
-                try? auth.signOut()
+                Text("QuickQuip")
+                    .font(.largeTitle)
+    
+                Button("Sign Out") {
+                    try? auth.signOut()
+                }
+                
             }
+
+            ZStack {
+
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundStyle(.gray)
+
+                Text(joke)
+                    .font(.largeTitle)
+                
+            }
+
+            HStack(spacing: 20) {
+
+                Button("Like", systemImage: "hand.thumbsup.fill") {
+                    // Get the ID from Joke to store it into firebase which stores likes and dislikes
+                }
+                    .buttonStyle(.borderProminent)
+
+                Button("Dislike", systemImage: "hand.thumbsdown.fill") {
+                    // Get the ID from Joke to store it into firebase which stores likes and dislikes
+                }
+                    .buttonStyle(.borderProminent)
+            }
+            
         }
     }
 
@@ -47,20 +78,12 @@ struct HomeView: View {
                         // print the jsonObj to see structure
                         print(jsonObj)
                         
-                        // find main key and get all the values as a dictionary
-                        if let mainDictionary = jsonObj.value(forKey: "main") as? NSDictionary {
+                        if let dadJoke = mainDictionary.value(forKey: "temp") {
                             
-                            // get the value for the key temp
-                            if let temperature = mainDictionary.value(forKey: "temp") {
-                                // make it happen on the main thread so it happens during viewDidLoad
-                                DispatchQueue.main.async {
-                                    // making the value show up on a label
-                                    self.weatherLabel.text = "result \(temperature)"
-                                }
-                              
-                            } else {
-                                print("Error: unable to find temperature in dictionary")
+                            DispatchQueue.main.async {
+                                self.joke = "\(dadJoke)"
                             }
+                            
                         } else {
                             print("Error: unable to convert json data")
                         }
