@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject private var auth = AuthViewModel()
+    
     var body: some View {
+
         VStack {
             Text("QuickQuip")
                 .font(.largeTitle)
@@ -56,10 +59,21 @@ struct ContentView: View {
         }
     
         dataTask.resume()
+
+        Group {
+            if auth.user != nil {
+                HomeView()
+                    .environmentObject(auth)
+            } else {
+                LoginView()
+                    .environmentObject(auth)
+            }
+        }
+
     }
-    
 }
 
 #Preview {
     ContentView()
+        .environmentObject(AuthViewModel())
 }
