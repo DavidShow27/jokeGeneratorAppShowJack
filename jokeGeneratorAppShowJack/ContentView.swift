@@ -8,69 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @StateObject private var auth = AuthViewModel()
-    
+
     var body: some View {
 
-        VStack {
-            Text("QuickQuip")
-                .font(.largeTitle)
-            
-            Spacer()
-            
-            
-        }
-        .onAppear(){
-            getJoke()
-        }
-        
-    }
-    func getJoke(){
-        
-        let session = URLSession.shared
-        
-        //creating URL for api call (you need your apikey)
-        let jokeURL = URL(
-            string:
-               //"http://v2.jokeapi.dev/joke/Any?format=json"
-            "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
-        )!
-        
-        // Making an api call and creating data in the completion handler
-        let dataTask = session.dataTask(with: jokeURL) {
-            // completion handler: happens on a different thread, could take time to get data
-            (data: Data?, response: URLResponse?, error: Error?) in
-            
-            if let error = error {
-                print("Error:\n\(error)")
-            } else {
-                // if there is data
-                if let data = data {
-                    // convert data to json Object
-                    if let jsonObj = try? JSONSerialization.jsonObject(
-                        with: data,
-                        options: .allowFragments
-                    ) as? NSDictionary {
-                        print(jsonObj)
-                    }
-                }
-            }
-        }
-    
-        dataTask.resume()
-
-        Group {
+        Group{
             if auth.user != nil {
                 HomeView()
-                    .environmentObject(auth)
+                    .environmentObject(AuthViewModel())
             } else {
                 LoginView()
                     .environmentObject(auth)
             }
         }
-
+        
     }
+
 }
 
 #Preview {

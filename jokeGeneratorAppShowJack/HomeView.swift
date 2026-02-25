@@ -42,14 +42,21 @@ struct HomeView: View {
                 Button("Like", systemImage: "hand.thumbsup.fill") {
                     // Get the ID from Joke to store it into firebase which stores likes and dislikes
                 }
-                    .buttonStyle(.borderProminent)
+                    .buttonStyle(.borderedProminent)
 
                 Button("Dislike", systemImage: "hand.thumbsdown.fill") {
                     // Get the ID from Joke to store it into firebase which stores likes and dislikes
                 }
-                    .buttonStyle(.borderProminent)
+                    .buttonStyle(.borderedProminent)
             }
+           Button("New Joke") {
+                getJoke()
+            }
+           .buttonStyle(.borderedProminent)
             
+        }
+        .onAppear(){
+            getJoke()
         }
     }
 
@@ -60,7 +67,7 @@ struct HomeView: View {
     
         //creating URL for api call (you need your apikey)
         // The website has https: if you are not at school.  We delete the s because of the app Transport settings
-        let weatherURL = URL(string: "https://icanhazdadjoke.com/")!
+        let weatherURL = URL(string: "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit")!
         
         // Making an api call and creating data in the completion handler     
         let dataTask = session.dataTask(with: weatherURL) {
@@ -78,22 +85,27 @@ struct HomeView: View {
                         // print the jsonObj to see structure
                         print(jsonObj)
                         
-                        if let dadJoke = mainDictionary.value(forKey: "temp") {
+                       
                             
-                            DispatchQueue.main.async {
-                                self.joke = "\(dadJoke)"
+                        if let j1 = jsonObj.value(forKey: "setup") {
+                            if let j2 = jsonObj.value(forKey: "delivery"){
+                                
+                                DispatchQueue.main.async {
+                                    joke = "\(j1)\n\n\(j2)"
+                                }
+                                
                             }
-                            
-                        } else {
-                            print("Error: unable to convert json data")
+                        }else {
+                                print("Error: unable to convert json data")
+                            }
                         }
                     }
                     else {
                         print("Error: Can't convert data to json object")
                     }
-                }else {
-                    print("Error: did not receive data")
-                }
+//                else {
+//                    print("Error: did not receive data")
+//                }
             }
         }
 
