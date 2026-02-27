@@ -19,8 +19,7 @@ struct HomeView: View {
     @State var jokeData: JokeData = JokeData(
         ID: -1,
         like: 0,
-        dislike: 0,
-        save: false
+        dislike: 0
     )
     @State var jokeID: Int = 0
     @State var jokeLikes: Int = 0
@@ -28,136 +27,182 @@ struct HomeView: View {
 
     @State var liked = false
     @State var disliked = false
+    @State var saved = false
 
     var body: some View {
-        VStack(spacing: 20) {
-
-            HStack(spacing: 20) {
-
+        
+        NavigationStack {
+            
+            VStack(spacing: 20) {
+                
                 Text("QuickQuip")
                     .font(.largeTitle)
-
-                Button("Sign Out") {
-                    try? auth.signOut()
-                }
-
-            }
-
-            ZStack {
-
-                RoundedRectangle(cornerRadius: 50)
-                    .foregroundStyle(.gray)
-
-                Text(joke)
-                    .font(.largeTitle)
                 
-                //putting favorite button in top right
-                VStack{
-                    HStack{
-                        Spacer()
-                        Button {
-                            print("Favorited")
-                        } label: {
-                            Image(systemName: "star")
-                        }
-                        .font(.title)
-                        .padding(.trailing, 30)
-                        .padding(.top, 30)
+                HStack {
+                    
+                    NavigationLink(destination: {
                         
-
+                    }) {
+                        Image(systemName: "house.fill")
+                            .font(.title)
                     }
+                    
                     Spacer()
+                    
+                    NavigationLink(destination: {
+                        
+                    }) {
+                        Image(systemName: "chart.bar.fill")
+                            .font(.title)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: {
+                        UserView()
+                    }) {
+                        Image(systemName: "person.fill")
+                            .font(.title)
+                    }
+                    
                 }
-
-            }
-
-            HStack(spacing: 20) {
-
-                VStack {
-
-                    Button("Like", systemImage: "hand.thumbsup.fill") {
-
-                        if !liked {
-                            jokeLikes += 1
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundStyle(.gray)
+                    
+                    
+                    Text(joke)
+                        .font(.largeTitle)
+                    
+                }
+                
+                HStack(spacing: 20) {
+                    
+                    VStack {
+                        
+                        Button {
+                            
+                            if !liked {
+                                jokeLikes += 1
+                                if disliked {
+                                    jokeDislikes -= 1
+                                    disliked = false
+                                }
+                                liked = true
+                            } else {
+                                jokeLikes -= 1
+                                liked = false
+                            }
+                            
+                            let d = [
+                                "id": jokeID, "likes": jokeLikes,
+                                "dislikes": jokeDislikes,
+                            ]
+                            
+                            jokeData.updateToFirebase(dict: d)
+                            
+                        } label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(liked ? .green : .blue)
+                                Label("Like", systemImage: liked ? "hand.thumbsup.fill" : "hand.thumbsup")
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 200, height: 60)
+                        }
+                        
+                        
+                        Text("\(jokeLikes)")
+                        
+                    }
+                    
+                    VStack {
+                        
+                        Button {
+                            
+                            if !disliked {
+                                jokeDislikes += 1
+                                if liked {
+                                    jokeLikes -= 1
+                                    liked = false
+                                }
+                                disliked = true
+                                saved = false
+                            } else {
+                                jokeDislikes -= 1
+                                disliked = false
+                            }
+                            
+                            let d = [
+                                "id": jokeID, "likes": jokeLikes,
+                                "dislikes": jokeDislikes,
+                            ]
+                            jokeData.updateToFirebase(dict: d)
+                        } label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(disliked ? .red : .blue)
+                                Label("Dislike", systemImage: disliked ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 200, height: 60)
+                        }
+                        
+                        Text("\(jokeDislikes)")
+                        
+                    }
+                    
+                    Button {
+                        
+                        if !saved {
                             if disliked {
                                 jokeDislikes -= 1
                                 disliked = false
                             }
-                            liked = true
+                            saved = true
                         } else {
-                            jokeLikes -= 1
-                            liked = false
+                            saved = false
                         }
-
-                        let d = [
-                            "id": jokeID, "likes": jokeLikes,
-                            "dislikes": jokeDislikes,
-                        ]
-
-                        jokeData.updateToFirebase(dict: d)
-                    }
-                    .buttonStyle(.borderedProminent)
-
-                    Text("\(jokeData.like)")
-
-                }
-
-                VStack {
-
-                    Button("Dislike", systemImage: "hand.thumbsdown.fill") {
-
-                        if !disliked {
-                            jokeDislikes += 1
-                            if liked {
-                                jokeLikes -= 1
-                                liked = false
-                            }
-                            disliked = true
+                        
+                        let d = ["id": jokeID]
+                        
+                        if saved {
+                            auth.addToFavorites(joke: d)
                         } else {
-                            jokeDislikes -= 1
-                            disliked = false
+                            auth.removeFromFavorites(joke: d)
                         }
-
-                        let d = [
-                            "id": jokeID, "likes": jokeLikes,
-                            "dislikes": jokeDislikes,
-                        ]
-                        jokeData.updateToFirebase(dict: d)
+                        
+                    } label: {
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(saved ? .pink : .blue)
+                            Label("Favorite", systemImage: saved ? "heart.fill" : "heart")
+                                .foregroundStyle(.white)
+                        }
+                        .frame(width: 200, height: 60)
                     }
-                    .buttonStyle(.borderedProminent)
-
-                    Text("\(jokeData.dislike)")
-
+                    // Fake Spacer()
+                    Text("")
+                    
                 }
-            }
-            Button("New Joke") {
-                liked = false
-                disliked = false
-                getJoke()
-            }
-            .buttonStyle(.borderedProminent)
-
-            
-            HStack{
-                
-                NavigationLink("Favorites"){
+                Button("New Joke") {
+                    liked = false
+                    disliked = false
+                    saved = false
+                    jokeLikes = 0
+                    jokeDislikes = 0
+                    getJoke()
                 }
                 .buttonStyle(.borderedProminent)
-//                .foregroundStyle(.white)
-//                .background(.blue)
-                .padding(20)
-                
-                Spacer()
-                
-                NavigationLink("Leaderboard"){
-                }
-                .buttonStyle(.borderedProminent)
-//                .foregroundStyle(.white)
-//                .background(.blue)
-                .padding(20)
                 
             }
-            
         }
         .onAppear {
             getJoke()
@@ -167,85 +212,83 @@ struct HomeView: View {
 
     func observeDatabase() {
 
-        ref.child("Jokes").observe(.childChanged, with: { snapshot in
-            
+        ref.child("Jokes").observe(
+            .childChanged,
+            with: { snapshot in
+
                 let data = snapshot.value as! [String: Any]
                 let j = JokeData(dict: data)
                 j.key = snapshot.key
-                
+
                 // Update the state to trigger a UI update
                 jokeData = j
-            })
-
+            }
+        )
 
     }
 
     func getJoke() {
-        
-        Task {
-            
-            // creating object of URLSession class to make api call
-            let session = URLSession.shared
-            
-            //creating URL for api call (you need your apikey)
-            // The website has https: if you are not at school.  We delete the s because of the app Transport settings
-            let weatherURL = URL(
-                string:
-                    "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
-            )!
-            
-            // Making an api call and creating data in the completion handler
-            let dataTask = session.dataTask(with: weatherURL) {
-                // completion handler: happens on a different thread, could take time to get data
-                
-                (data: Data?, response: URLResponse?, error: Error?) in
-                
-                if let error = error {
-                    print("Error:\n\(error)")
-                } else {
-                    // if there is data
-                    if let data = data {
-                        // convert data to json Object
-                        if let jsonObj = try? JSONSerialization.jsonObject(
-                            with: data,
-                            options: .allowFragments
-                        )
-                            as? NSDictionary
-                        {
-                            // print the jsonObj to see structure
-                            print(jsonObj)
-                            
-                            if let j1 = jsonObj.value(forKey: "setup") {
-                                if let j2 = jsonObj.value(forKey: "delivery") {
-                                    
-                                    DispatchQueue.main.async {
-                                        joke = "\(j1)\n\n\(j2)"
-                                    }
-                                    
-                                }
-                            } else {
-                                print("Error: unable to convert json data")
-                            }
-                            
-                            if let jID = jsonObj.value(forKey: "id") {
+
+        // creating object of URLSession class to make api call
+        let session = URLSession.shared
+
+        //creating URL for api call (you need your apikey)
+        // The website has https: if you are not at school.  We delete the s because of the app Transport settings
+        let weatherURL = URL(
+            string:
+                "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+        )!
+
+        // Making an api call and creating data in the completion handler
+        let dataTask = session.dataTask(with: weatherURL) {
+            // completion handler: happens on a different thread, could take time to get data
+
+            (data: Data?, response: URLResponse?, error: Error?) in
+
+            if let error = error {
+                print("Error:\n\(error)")
+            } else {
+                // if there is data
+                if let data = data {
+                    // convert data to json Object
+                    if let jsonObj = try? JSONSerialization.jsonObject(
+                        with: data,
+                        options: .allowFragments
+                    )
+                        as? NSDictionary
+                    {
+                        // print the jsonObj to see structure
+                        print(jsonObj)
+
+                        if let j1 = jsonObj.value(forKey: "setup") {
+                            if let j2 = jsonObj.value(forKey: "delivery") {
+
                                 DispatchQueue.main.async {
-                                    
-                                    if let realJID = Int("\(jID)") {
-                                        jokeID = Int(realJID)
-                                    }
+                                    joke = "\(j1)\n\n\(j2)"
+                                }
+
+                            }
+                        } else {
+                            print("Error: unable to convert json data")
+                        }
+
+                        if let jID = jsonObj.value(forKey: "id") {
+                            DispatchQueue.main.async {
+
+                                if let realJID = Int("\(jID)") {
+                                    jokeID = Int(realJID)
                                 }
                             }
-                            
                         }
-                    } else {
-                        print("Error: Can't convert data to json object")
+
                     }
+                } else {
+                    print("Error: Can't convert data to json object")
                 }
             }
-            
-            dataTask.resume()
-            
         }
+
+        dataTask.resume()
 
     }
 
