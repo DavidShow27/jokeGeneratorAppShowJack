@@ -50,6 +50,24 @@ struct HomeView: View {
 
                 Text(joke)
                     .font(.largeTitle)
+                
+                //putting favorite button in top right
+                VStack{
+                    HStack{
+                        Spacer()
+                        Button {
+                            print("Favorited")
+                        } label: {
+                            Image(systemName: "star")
+                        }
+                        .font(.title)
+                        .padding(.trailing, 30)
+                        .padding(.top, 30)
+                        
+
+                    }
+                    Spacer()
+                }
 
             }
 
@@ -119,6 +137,27 @@ struct HomeView: View {
             }
             .buttonStyle(.borderedProminent)
 
+            
+            HStack{
+                
+                NavigationLink("Favorites"){
+                }
+                .buttonStyle(.borderedProminent)
+//                .foregroundStyle(.white)
+//                .background(.blue)
+                .padding(20)
+                
+                Spacer()
+                
+                NavigationLink("Leaderboard"){
+                }
+                .buttonStyle(.borderedProminent)
+//                .foregroundStyle(.white)
+//                .background(.blue)
+                .padding(20)
+                
+            }
+            
         }
         .onAppear {
             getJoke()
