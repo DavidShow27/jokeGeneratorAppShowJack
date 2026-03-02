@@ -29,6 +29,8 @@ struct UserView: View {
 
             }
 
+            Text("Favorites:")
+                .font(Font.headline.bold())
             List {
 
                 ForEach(jokes, id: \.self) { joke in
@@ -42,12 +44,17 @@ struct UserView: View {
         }
         .onAppear {
 
-            auth.getFavorites(userID: auth.user!.uid) {
-                for jID in auth.favJokes {
-                    getJokeAtCertainIndex(id: jID)
+            if let user = auth.user {
+                auth.getFavorites(userID: user.uid) {
+                    for jID in auth.favJokes {
+                        getJokeAtCertainIndex(id: jID)
+                    }
                 }
             }
 
+        }
+        .onDisappear{
+            jokes = []
         }
 
     }

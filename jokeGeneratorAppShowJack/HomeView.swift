@@ -15,7 +15,10 @@ struct HomeView: View {
     var ref = Database.database().reference()
 
     @EnvironmentObject var auth: AuthViewModel
-    @State var joke: String = ""
+    @State var jokeSetup: String = ""
+    @State var jokePunch: String = ""
+    @State var flipped: Bool = false
+    
     @State var jokeData: JokeData = JokeData(
         ID: -1,
         like: 0,
@@ -74,11 +77,25 @@ struct HomeView: View {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundStyle(.gray)
                     
-                    
-                    Text(joke)
-                        .font(.largeTitle)
+                    if flipped{
+                        Text(jokePunch)
+                            .font(.largeTitle)
+                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                    }
+                    else{
+                        Text(jokeSetup)
+                            .font(.largeTitle)
+                    }
                     
                 }
+                .rotation3DEffect(
+                            .degrees(flipped ? 180 : 0),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                .animation(.easeInOut(duration: 0.5), value: flipped)
+                .onTapGesture {
+                            flipped.toggle()
+                        }
                 
                 HStack(spacing: 20) {
                     
@@ -113,7 +130,7 @@ struct HomeView: View {
                                 Label("Like", systemImage: liked ? "hand.thumbsup.fill" : "hand.thumbsup")
                                     .foregroundStyle(.white)
                             }
-                            .frame(width: 200, height: 60)
+                            .frame(maxWidth: 200, maxHeight: 60)
                         }
                         
                         
@@ -151,7 +168,7 @@ struct HomeView: View {
                                 Label("Dislike", systemImage: disliked ? "hand.thumbsdown.fill" : "hand.thumbsdown")
                                     .foregroundStyle(.white)
                             }
-                            .frame(width: 200, height: 60)
+                            .frame(maxWidth: 200, maxHeight: 60)
                         }
                         
                         Text("\(jokeDislikes)")
@@ -186,7 +203,7 @@ struct HomeView: View {
                             Label("Favorite", systemImage: saved ? "heart.fill" : "heart")
                                 .foregroundStyle(.white)
                         }
-                        .frame(width: 200, height: 60)
+                        .frame(maxWidth: 200, maxHeight: 60)
                     }
                     // Fake Spacer()
                     Text("")
@@ -196,6 +213,7 @@ struct HomeView: View {
                     liked = false
                     disliked = false
                     saved = false
+                    flipped = false
                     jokeLikes = 0
                     jokeDislikes = 0
                     getJoke()
@@ -207,6 +225,7 @@ struct HomeView: View {
         .onAppear {
             getJoke()
             observeDatabase()
+            flipped = false
         }
     }
 
@@ -264,7 +283,8 @@ struct HomeView: View {
                             if let j2 = jsonObj.value(forKey: "delivery") {
 
                                 DispatchQueue.main.async {
-                                    joke = "\(j1)\n\n\(j2)"
+                                    jokeSetup = "\(j1)"
+                                    jokePunch = "\(j2)"
                                 }
 
                             }
