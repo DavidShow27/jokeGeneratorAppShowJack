@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2600"
+   LastUpgradeVersion = "2620"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5372768B2F4898CE0062369E"
-               BuildableName = "jokeGeneratorAppShowJack.app"
-               BlueprintName = "jokeGeneratorAppShowJack"
-               ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
+               BuildableName = "jokeGeneratorAppShowJack2.app"
+               BlueprintName = "jokeGeneratorAppShowJack2"
+               ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5372768B2F4898CE0062369E"
-            BuildableName = "jokeGeneratorAppShowJack.app"
-            BlueprintName = "jokeGeneratorAppShowJack"
-            ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
+            BuildableName = "jokeGeneratorAppShowJack2.app"
+            BlueprintName = "jokeGeneratorAppShowJack2"
+            ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5372768B2F4898CE0062369E"
-            BuildableName = "jokeGeneratorAppShowJack.app"
-            BlueprintName = "jokeGeneratorAppShowJack"
-            ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
+            BuildableName = "jokeGeneratorAppShowJack2.app"
+            BlueprintName = "jokeGeneratorAppShowJack2"
+            ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

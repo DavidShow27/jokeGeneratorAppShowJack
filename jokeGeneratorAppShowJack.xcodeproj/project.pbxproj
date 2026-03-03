@@ -15,16 +15,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jokeGeneratorAppShowJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jokeGeneratorAppShowJack2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */ = {
+		FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack2" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */;
+			target = 5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -32,7 +32,7 @@
 		5372768E2F4898CE0062369E /* jokeGeneratorAppShowJack */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */,
+				FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack2" target */,
 			);
 			path = jokeGeneratorAppShowJack;
 			sourceTree = "<group>";
@@ -66,7 +66,7 @@
 		5372768D2F4898CE0062369E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */,
+				5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,9 +74,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */ = {
+		5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack" */;
+			buildConfigurationList = 537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack2" */;
 			buildPhases = (
 				537276882F4898CE0062369E /* Sources */,
 				537276892F4898CE0062369E /* Frameworks */,
@@ -89,7 +89,7 @@
 			fileSystemSynchronizedGroups = (
 				5372768E2F4898CE0062369E /* jokeGeneratorAppShowJack */,
 			);
-			name = jokeGeneratorAppShowJack;
+			name = jokeGeneratorAppShowJack2;
 			packageProductDependencies = (
 				FB216FAC2F4DE8390052267C /* FirebaseAuth */,
 				FB216FAE2F4DE8390052267C /* FirebaseCore */,
@@ -98,7 +98,7 @@
 				FB216FB42F4DE8390052267C /* FirebaseStorage */,
 			);
 			productName = jokeGeneratorAppShowJack;
-			productReference = 5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */;
+			productReference = 5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -116,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack" */;
+			buildConfigurationList = 537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack2" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */,
+				5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */,
 			);
 		};
 /* End PBXProject section */
@@ -194,6 +194,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 55579PX2YL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -217,6 +218,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -257,6 +259,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 55579PX2YL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -273,6 +276,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -285,7 +289,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55579PX2YL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = jokeGeneratorAppShowJack/Info.plist;
@@ -299,7 +303,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.JokeGitterShowJack;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -318,7 +322,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55579PX2YL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = jokeGeneratorAppShowJack/Info.plist;
@@ -332,7 +336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.JokeGitterShowJack;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -347,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack" */ = {
+		537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				537276952F4898CF0062369E /* Debug */,
@@ -356,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack" */ = {
+		537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				537276982F4898CF0062369E /* Debug */,
