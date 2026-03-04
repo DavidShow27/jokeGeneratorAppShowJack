@@ -156,5 +156,6 @@ class JokeData {
         key = "\(jID)"
         ref.child("Jokes").child(key).setValue(dict)
     }
+    
 
 }

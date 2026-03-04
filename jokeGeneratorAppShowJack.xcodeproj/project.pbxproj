@@ -15,16 +15,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jokeGeneratorAppShowJack2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jokeGeneratorAppShowJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack2" target */ = {
+		FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */;
+			target = 5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -32,7 +32,7 @@
 		5372768E2F4898CE0062369E /* jokeGeneratorAppShowJack */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack2" target */,
+				FBFCE5052F4C9A8600FF7F79 /* Exceptions for "jokeGeneratorAppShowJack" folder in "jokeGeneratorAppShowJack" target */,
 			);
 			path = jokeGeneratorAppShowJack;
 			sourceTree = "<group>";
@@ -66,7 +66,7 @@
 		5372768D2F4898CE0062369E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */,
+				5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,9 +74,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */ = {
+		5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack2" */;
+			buildConfigurationList = 537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack" */;
 			buildPhases = (
 				537276882F4898CE0062369E /* Sources */,
 				537276892F4898CE0062369E /* Frameworks */,
@@ -89,7 +89,7 @@
 			fileSystemSynchronizedGroups = (
 				5372768E2F4898CE0062369E /* jokeGeneratorAppShowJack */,
 			);
-			name = jokeGeneratorAppShowJack2;
+			name = jokeGeneratorAppShowJack;
 			packageProductDependencies = (
 				FB216FAC2F4DE8390052267C /* FirebaseAuth */,
 				FB216FAE2F4DE8390052267C /* FirebaseCore */,
@@ -98,7 +98,7 @@
 				FB216FB42F4DE8390052267C /* FirebaseStorage */,
 			);
 			productName = jokeGeneratorAppShowJack;
-			productReference = 5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack2.app */;
+			productReference = 5372768C2F4898CE0062369E /* jokeGeneratorAppShowJack.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -116,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack2" */;
+			buildConfigurationList = 537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack2 */,
+				5372768B2F4898CE0062369E /* jokeGeneratorAppShowJack */,
 			);
 		};
 /* End PBXProject section */
@@ -303,7 +303,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack2;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -336,7 +336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack2;
+				PRODUCT_BUNDLE_IDENTIFIER = clc.jokeGeneratorAppShowJack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -351,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack2" */ = {
+		537276872F4898CE0062369E /* Build configuration list for PBXProject "jokeGeneratorAppShowJack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				537276952F4898CF0062369E /* Debug */,
@@ -360,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack2" */ = {
+		537276972F4898CF0062369E /* Build configuration list for PBXNativeTarget "jokeGeneratorAppShowJack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				537276982F4898CF0062369E /* Debug */,

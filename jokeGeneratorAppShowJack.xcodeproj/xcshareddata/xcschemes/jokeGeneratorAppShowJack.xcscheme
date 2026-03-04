@@ -25,9 +25,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5372768B2F4898CE0062369E"
-               BuildableName = "jokeGeneratorAppShowJack2.app"
-               BlueprintName = "jokeGeneratorAppShowJack2"
-               ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
+               BuildableName = "jokeGeneratorAppShowJack.app"
+               BlueprintName = "jokeGeneratorAppShowJack"
+               ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,9 +54,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5372768B2F4898CE0062369E"
-            BuildableName = "jokeGeneratorAppShowJack2.app"
-            BlueprintName = "jokeGeneratorAppShowJack2"
-            ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
+            BuildableName = "jokeGeneratorAppShowJack.app"
+            BlueprintName = "jokeGeneratorAppShowJack"
+            ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5372768B2F4898CE0062369E"
-            BuildableName = "jokeGeneratorAppShowJack2.app"
-            BlueprintName = "jokeGeneratorAppShowJack2"
-            ReferencedContainer = "container:jokeGeneratorAppShowJack2.xcodeproj">
+            BuildableName = "jokeGeneratorAppShowJack.app"
+            BlueprintName = "jokeGeneratorAppShowJack"
+            ReferencedContainer = "container:jokeGeneratorAppShowJack.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

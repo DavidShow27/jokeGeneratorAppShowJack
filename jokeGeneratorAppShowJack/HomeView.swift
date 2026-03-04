@@ -15,10 +15,7 @@ struct HomeView: View {
     var ref = Database.database().reference()
 
     @EnvironmentObject var auth: AuthViewModel
-    @State var jokeSetup: String = ""
-    @State var jokePunch: String = ""
-    @State var flipped: Bool = false
-    
+    @State var joke: String = "Test"
     @State var jokeData: JokeData = JokeData(
         ID: -1,
         like: 0,
@@ -31,7 +28,7 @@ struct HomeView: View {
     @State var liked = false
     @State var disliked = false
     @State var saved = false
-
+    
     var body: some View {
         
         NavigationStack {
@@ -39,7 +36,8 @@ struct HomeView: View {
             VStack(spacing: 20) {
                 
                 Text("QuickQuip")
-                    .font(.largeTitle)
+                    //.font(.largeTitle)
+                    .font(Font.custom("American Typewriter", size: 72))
                 
                 HStack {
                     
@@ -53,7 +51,7 @@ struct HomeView: View {
                     Spacer()
                     
                     NavigationLink(destination: {
-                        
+                        LeaderboardView()
                     }) {
                         Image(systemName: "chart.bar.fill")
                             .font(.title)
@@ -75,27 +73,13 @@ struct HomeView: View {
                 ZStack {
                     
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundStyle(.gray)
+                        .glassEffect(in: RoundedRectangle(cornerRadius: 50))
                     
-                    if flipped{
-                        Text(jokePunch)
-                            .font(.largeTitle)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    }
-                    else{
-                        Text(jokeSetup)
-                            .font(.largeTitle)
-                    }
+                    Text(joke)
+                        .font(Font.custom("American Typewriter", size: 40))
                     
                 }
-                .rotation3DEffect(
-                            .degrees(flipped ? 180 : 0),
-                            axis: (x: 0, y: 1, z: 0)
-                        )
-                .animation(.easeInOut(duration: 0.5), value: flipped)
-                .onTapGesture {
-                            flipped.toggle()
-                        }
+                .frame(width: 350, height: .infinity)
                 
                 HStack(spacing: 20) {
                     
@@ -213,7 +197,6 @@ struct HomeView: View {
                     liked = false
                     disliked = false
                     saved = false
-                    flipped = false
                     jokeLikes = 0
                     jokeDislikes = 0
                     getJoke()
@@ -221,11 +204,13 @@ struct HomeView: View {
                 .buttonStyle(.borderedProminent)
                 
             }
+            .background (
+                LinearGradient(colors: [.mint, .blue], startPoint: .top, endPoint: .bottom)
+            )
         }
         .onAppear {
-            getJoke()
+            //getJoke()
             observeDatabase()
-            flipped = false
         }
     }
 
@@ -283,8 +268,7 @@ struct HomeView: View {
                             if let j2 = jsonObj.value(forKey: "delivery") {
 
                                 DispatchQueue.main.async {
-                                    jokeSetup = "\(j1)"
-                                    jokePunch = "\(j2)"
+                                    joke = "\(j1)\n\n\(j2)"
                                 }
 
                             }
