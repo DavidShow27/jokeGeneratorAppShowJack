@@ -27,7 +27,7 @@ class AuthViewModel: ObservableObject {
             self.isAnonymous = user?.isAnonymous ?? false
             if let userID = user?.uid {
                 self.getFavorites(userID: userID) {
-                    
+
                 }
             }
         }
@@ -82,7 +82,7 @@ class AuthViewModel: ObservableObject {
         guard let userID = user?.uid else { return }
 
         let favoriteRef = ref.collection("users").document(userID).collection(
-        "favorites"
+            "favorites"
         ).document("\(joke["id"] as! Int)")
 
         favoriteRef.setData(joke) { error in
@@ -95,7 +95,7 @@ class AuthViewModel: ObservableObject {
     }
 
     func removeFromFavorites(joke: [String: Any]) {
-        
+
         guard let userID = user?.uid else { return }
 
         let favoriteRef = ref.collection("users").document(userID).collection(
@@ -106,11 +106,11 @@ class AuthViewModel: ObservableObject {
             if let error = error {
                 print("Error removing favorite: \(error)")
             } else {
-                
-                if let i = self.favJokes.last {
-                    self.favJokes.remove(at: i)
+
+                if let id = joke["id"] as? Int {
+                    self.favJokes.removeAll { $0 == id }
                 }
-                
+
             }
         }
     }
