@@ -43,6 +43,7 @@ struct UserView: View {
 
         }
         .onAppear {
+            jokes.removeAll()
 
             if let user = auth.user {
                 auth.getFavorites(userID: user.uid) {
@@ -53,9 +54,7 @@ struct UserView: View {
             }
 
         }
-        .onDisappear{
-            jokes = []
-        }
+        
 
     }
 
@@ -91,6 +90,7 @@ struct UserView: View {
                     {
                         // print the jsonObj to see structure
                         print(jsonObj)
+                        
 
                         if let j1 = jsonObj.value(forKey: "setup") {
                             if let j2 = jsonObj.value(forKey: "delivery") {
