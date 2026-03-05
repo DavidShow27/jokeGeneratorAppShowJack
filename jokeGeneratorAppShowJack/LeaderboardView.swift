@@ -13,8 +13,8 @@ import SwiftUI
 struct LeaderboardView: View {
 
     var ref = Database.database().reference()
-    @State var topJokes = [JokeData(dict: [:])]
-    @State var allJokes = [JokeData(dict: [:])]
+    @State var allJokes: [JokeData] = []
+    @State var jokeWords: [String] = []
 
     var body: some View {
 
@@ -25,19 +25,28 @@ struct LeaderboardView: View {
                 .multilineTextAlignment(.center)
 
             List {
+                
+                ForEach(allJokes, id: \.ID) { joke in
 
+                    Text("\(joke.ID)")
+                    
+                }
+                
             }
         }
         .onAppear {
-            fireBaseStuff()
-            allJokes = allJokes.sorted {$0.ID < $1.ID}
+            
+            fireBaseStuff {
+                allJokes = allJokes.sorted {$0.like > $1.like}
+            }
+            
             for i in allJokes {
-                print(i.ID)
+                
             }
         }
     }
 
-    func fireBaseStuff() {
+    func fireBaseStuff(complete: @escaping() -> Void) {
         
         ref.child("Jokes").observe(
             .childAdded,
