@@ -26,9 +26,9 @@ struct LeaderboardView: View {
 
             List {
                 
-                ForEach(allJokes, id: \.ID) { joke in
+                ForEach(jokeWords, id: \.self) { joke in
 
-                    Text("\(joke.ID)")
+                    Text("\(joke)")
                     
                 }
                 
@@ -40,9 +40,14 @@ struct LeaderboardView: View {
                 allJokes = allJokes.sorted {$0.like > $1.like}
             }
             
-            for i in allJokes {
-                
+            Task {
+                for i in allJokes {
+                    APICalls().getJokeAt(id: i.ID) { joke in
+                        jokeWords.append(joke)
+                    }
+                }
             }
+
         }
     }
 
