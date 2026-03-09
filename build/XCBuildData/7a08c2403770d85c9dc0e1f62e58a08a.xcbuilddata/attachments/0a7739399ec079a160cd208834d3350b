@@ -1,0 +1,4 @@
+module nanopb {
+umbrella "/Users/david.show27/Library/Developer/Xcode/DerivedData/jokeGeneratorAppShowJack-cdawpxmqcgckzagsayjurvjtjygr/SourcePackages/checkouts/nanopb/spm_headers"
+export *
+}

@@ -1,0 +1,4 @@
+module abslWrapper {
+umbrella "/Users/david.show27/Library/Developer/Xcode/DerivedData/jokeGeneratorAppShowJack-cdawpxmqcgckzagsayjurvjtjygr/SourcePackages/checkouts/abseil-cpp-binary/absl-Wrapper/include"
+export *
+}

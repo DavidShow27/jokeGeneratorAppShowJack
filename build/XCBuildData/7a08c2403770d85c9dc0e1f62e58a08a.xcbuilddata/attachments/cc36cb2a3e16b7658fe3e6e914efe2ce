@@ -1,0 +1,4 @@
+module GoogleUtilities_Network {
+umbrella "/Users/david.show27/Library/Developer/Xcode/DerivedData/jokeGeneratorAppShowJack-cdawpxmqcgckzagsayjurvjtjygr/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/Network/Public"
+export *
+}

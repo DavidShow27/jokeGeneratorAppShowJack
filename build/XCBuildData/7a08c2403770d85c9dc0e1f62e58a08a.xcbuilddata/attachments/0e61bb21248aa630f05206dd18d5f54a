@@ -1,0 +1,4 @@
+module leveldb {
+umbrella "/Users/david.show27/Library/Developer/Xcode/DerivedData/jokeGeneratorAppShowJack-cdawpxmqcgckzagsayjurvjtjygr/SourcePackages/checkouts/leveldb/include"
+export *
+}

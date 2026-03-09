@@ -1,0 +1,99 @@
+{
+  "" : {
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJack-primary.dia",
+    "emit-module-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJack-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJack-primary-emit-module.dia",
+    "pch" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJack-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJack-primary.swiftdeps"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/APICalls.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/APICalls~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/AuthenticateUser.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/AuthenticateUser~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/ContentView.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/HomeView.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/HomeView~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/LeaderboardView.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LeaderboardView~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/LoginView.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/UserView.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/UserView~partial.swiftmodule"
+  },
+  "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/jokeGeneratorAppShowJack/jokeGeneratorAppShowJackApp.swift" : {
+    "const-values" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.swiftconstvalues",
+    "dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.d",
+    "diagnostics" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.dia",
+    "index-unit-output-path" : "/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.o",
+    "llvm-bc" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.bc",
+    "object" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.o",
+    "swift-dependencies" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp.swiftdeps",
+    "swiftmodule" : "/Users/david.show27/Documents/jokeGeneratorAppShowJack2/build/jokeGeneratorAppShowJack.build/Debug-iphonesimulator/jokeGeneratorAppShowJack.build/Objects-normal/arm64/jokeGeneratorAppShowJackApp~partial.swiftmodule"
+  }
+}

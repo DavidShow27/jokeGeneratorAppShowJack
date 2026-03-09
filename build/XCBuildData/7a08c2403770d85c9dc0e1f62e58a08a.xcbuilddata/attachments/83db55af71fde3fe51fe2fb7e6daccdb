@@ -1,0 +1,4 @@
+module GTMSessionFetcherCore {
+umbrella "/Users/david.show27/Library/Developer/Xcode/DerivedData/jokeGeneratorAppShowJack-cdawpxmqcgckzagsayjurvjtjygr/SourcePackages/checkouts/gtm-session-fetcher/Sources/Core/Public"
+export *
+}
