@@ -118,9 +118,9 @@ class AuthViewModel: ObservableObject {
 }
 
 class JokeData {
-
+    
     var ref = Database.database().reference()
-
+    
     var ID: Int
     var like: Int
     var dislike: Int

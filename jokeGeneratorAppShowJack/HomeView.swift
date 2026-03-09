@@ -16,11 +16,13 @@ struct HomeView: View {
 
     @EnvironmentObject var auth: AuthViewModel
     @State var joke: String = "Test"
+    // Global Data
     @State var jokeData: JokeData = JokeData(
         ID: -1,
         like: 0,
         dislike: 0
     )
+    // Local Data
     @State var jokeID: Int = 0
     @State var jokeLikes: Int = 0
     @State var jokeDislikes: Int = 0
@@ -117,7 +119,7 @@ struct HomeView: View {
                         }
                         
                         
-                        Text("\(jokeLikes)")
+                        Text("\(jokeData.like + jokeLikes)")
                         
                     }
                     
@@ -154,7 +156,7 @@ struct HomeView: View {
                             .frame(maxWidth: 200, maxHeight: 60)
                         }
                         
-                        Text("\(jokeDislikes)")
+                        Text("\(jokeData.dislike + jokeDislikes)")
                         
                     }
                     
@@ -205,6 +207,8 @@ struct HomeView: View {
                         jokeID = id
                     }
                     
+                    observeDatabase()
+                    
                 }
                 .buttonStyle(.borderedProminent)
                 
@@ -221,6 +225,7 @@ struct HomeView: View {
             }
             
             observeDatabase()
+
         }
     }
 

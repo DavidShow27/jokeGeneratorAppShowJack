@@ -25,13 +25,16 @@ struct LeaderboardView: View {
                 .multilineTextAlignment(.center)
 
             List {
+                ForEach(Array(jokeWords.indices.prefix(10)), id: \.self) { i in
+                    HStack {
+                        Text(jokeWords[i])
 
-                ForEach(jokeWords, id: \.self) { joke in
+                        Spacer()
 
-                    Text("\(joke)")
-
+                        Text("Likes: \(allJokes[i].like)")
+                        Text("Dislikes: \(allJokes[i].dislike)")
+                    }
                 }
-
             }
 
             Button("hi") {
@@ -43,23 +46,20 @@ struct LeaderboardView: View {
                 }
             }
         }
-        .task {
+        .onAppear {
 
             fireBaseStuff()
 
-            allJokes = allJokes.sorted { $0.like > $1.like }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
+                
+                allJokes = allJokes.sorted { $0.like > $1.like }
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [self] in
-                
                 for i in allJokes {
-                    for j in 0..<10 {
-                        APICalls().getJokeAt(id: i.ID) { joke in
-                            jokeWords.append(joke)
-                        }
+                    APICalls().getJokeAt(id: i.ID) { joke in
+                        jokeWords.append(joke)
                     }
-                    break
                 }
-                
+
             }
         }
 
