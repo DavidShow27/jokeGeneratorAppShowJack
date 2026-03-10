@@ -15,14 +15,11 @@ struct HomeView: View {
     var ref = Database.database().reference()
 
     @EnvironmentObject var auth: AuthViewModel
-    @State var joke: String = "Test"
-    // Global Data
     @State var jokeData: JokeData = JokeData(
         ID: -1,
         like: 0,
         dislike: 0
     )
-    // Local Data
     @State var jokeID: Int = 0
     @State var jokeLikes: Int = 0
     @State var jokeDislikes: Int = 0
@@ -30,6 +27,10 @@ struct HomeView: View {
     @State var liked = false
     @State var disliked = false
     @State var saved = false
+    
+    @State var jokeSetup: String = ""
+    @State var jokePunch: String = ""
+    @State var flipped: Bool = false
     
     var body: some View {
         
@@ -43,10 +44,10 @@ struct HomeView: View {
                 
                 HStack {
                     
-                    NavigationLink(destination: {
-                        
-                    }) {
-                        Image(systemName: "house.fill")
+                    Button{
+                        try? auth.signOut()
+                    }label:{
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
                             .font(.title)
                     }
                     
@@ -66,7 +67,10 @@ struct HomeView: View {
                     }) {
                         Image(systemName: "person.fill")
                             .font(.title)
+                            .opacity(auth.isAnonymous ? 0.3 : 1)
                     }
+                    .disabled(auth.isAnonymous)
+
                     
                 }
                 .padding()
@@ -77,10 +81,26 @@ struct HomeView: View {
                     RoundedRectangle(cornerRadius: 50)
                         .glassEffect(in: RoundedRectangle(cornerRadius: 50))
                     
-                    Text(joke)
-                        .font(Font.custom("American Typewriter", size: 40))
+                    if flipped{
+                        Text(jokePunch)
+                            .font(.largeTitle)
+                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                    }
+                    else{
+                        Text(jokeSetup)
+                            .font(.largeTitle)
+                    }
                     
                 }
+                .frame(maxWidth: 350, maxHeight: 600)
+                .rotation3DEffect(
+                            .degrees(flipped ? 180 : 0),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                .animation(.easeInOut(duration: 0.5), value: flipped)
+                .onTapGesture {
+                            flipped.toggle()
+                        }
                 
                 HStack(spacing: 20) {
                     
@@ -116,10 +136,13 @@ struct HomeView: View {
                                     .foregroundStyle(.white)
                             }
                             .frame(maxWidth: 200, maxHeight: 60)
+                            .opacity(auth.isAnonymous ? 0.3 : 1)
+
                         }
+                        .disabled(auth.isAnonymous)
                         
                         
-                        Text("\(jokeData.like + jokeLikes)")
+                        Text("\(jokeLikes)")
                         
                     }
                     
@@ -154,9 +177,13 @@ struct HomeView: View {
                                     .foregroundStyle(.white)
                             }
                             .frame(maxWidth: 200, maxHeight: 60)
+                            .opacity(auth.isAnonymous ? 0.3 : 1)
+
                         }
+                        .disabled(auth.isAnonymous)
+
                         
-                        Text("\(jokeData.dislike + jokeDislikes)")
+                        Text("\(jokeDislikes)")
                         
                     }
                     
@@ -189,7 +216,10 @@ struct HomeView: View {
                                 .foregroundStyle(.white)
                         }
                         .frame(maxWidth: 200, maxHeight: 60)
+                        .opacity(auth.isAnonymous ? 0.3 : 1)
                     }
+                    .disabled(auth.isAnonymous)
+
                     // Fake Spacer()
                     Text("")
                     
@@ -199,15 +229,15 @@ struct HomeView: View {
                     liked = false
                     disliked = false
                     saved = false
+                    flipped = false
                     jokeLikes = 0
                     jokeDislikes = 0
                     
-                    APICalls().getRandomJoke { j, id in
-                        joke = j
+                    APICalls().getRandomJokeSeparate { js, jd, id in
+                        jokeSetup = js
+                        jokePunch = jd
                         jokeID = id
                     }
-                    
-                    observeDatabase()
                     
                 }
                 .buttonStyle(.borderedProminent)
@@ -218,14 +248,17 @@ struct HomeView: View {
             )
         }
         .onAppear {
+            flipped = false
+            //getJoke()
             
-            APICalls().getRandomJoke { j, id in
-                joke = j
+            APICalls().getRandomJokeSeparate{js, jd, id in
+                jokeSetup = js
+                jokePunch = jd
+                
                 jokeID = id
             }
             
             observeDatabase()
-
         }
     }
 
@@ -245,6 +278,73 @@ struct HomeView: View {
         )
 
     }
+
+//    func getJoke() {
+//
+//        // creating object of URLSession class to make api call
+//        let session = URLSession.shared
+//
+//        //creating URL for api call (you need your apikey)
+//        // The website has https: if you are not at school.  We delete the s because of the app Transport settings
+//        let weatherURL = URL(
+//            string:
+//                "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+//        )!
+//
+//        // Making an api call and creating data in the completion handler
+//        let dataTask = session.dataTask(with: weatherURL) {
+//            // completion handler: happens on a different thread, could take time to get data
+//
+//            (data: Data?, response: URLResponse?, error: Error?) in
+//
+//            if let error = error {
+//                print("Error:\n\(error)")
+//            } else {
+//                // if there is data
+//                if let data = data {
+//                    // convert data to json Object
+//                    if let jsonObj = try? JSONSerialization.jsonObject(
+//                        with: data,
+//                        options: .allowFragments
+//                    )
+//                        as? NSDictionary
+//                    {
+//                        // print the jsonObj to see structure
+//                        print(jsonObj)
+//
+//                        if let j1 = jsonObj.value(forKey: "setup") {
+//                            if let j2 = jsonObj.value(forKey: "delivery") {
+//
+//                                DispatchQueue.main.async {
+//                                    jokeSetup = "\(j1)"
+//                                    jokePunch = "\(j2)"
+//                                   
+//                                }
+//
+//                            }
+//                        } else {
+//                            print("Error: unable to convert json data")
+//                        }
+//
+//                        if let jID = jsonObj.value(forKey: "id") {
+//                            DispatchQueue.main.async {
+//
+//                                if let realJID = Int("\(jID)") {
+//                                    jokeID = Int(realJID)
+//                                }
+//                            }
+//                        }
+//
+//                    }
+//                } else {
+//                    print("Error: Can't convert data to json object")
+//                }
+//            }
+//        }
+//
+//        dataTask.resume()
+//
+//    }
 
 }
 #Preview {
