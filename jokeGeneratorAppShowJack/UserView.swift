@@ -43,7 +43,6 @@ struct UserView: View {
 
         }
         .onAppear {
-            jokes.removeAll()
 
             if let user = auth.user {
                 auth.getFavorites(userID: user.uid) {
@@ -53,6 +52,7 @@ struct UserView: View {
                             jokes.append(joke)
                         }
                     }
+                    print(auth.favJokes)
                     
                 }
             }

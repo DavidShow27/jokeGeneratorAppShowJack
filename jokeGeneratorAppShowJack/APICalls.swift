@@ -54,7 +54,15 @@ class APICalls {
 
                             }
                         } else {
-                            print("Error: unable to convert json data")
+                            print("Error: no setup or punchline")
+                            
+                            if let j3 = jsonObj.value(forKey: "joke") {
+                                DispatchQueue.main.async {
+                                    joke = "\(j3)"
+                                }
+                            } else {
+                                print("Error: cannot convert json data")
+                            }
                         }
 
                         if let jID = jsonObj.value(forKey: "id") {
@@ -126,7 +134,15 @@ class APICalls {
 
                             }
                         } else {
-                            print("Error: unable to convert json data")
+                            print("Error: no setup or punchline")
+                            
+                            if let j3 = jsonObj.value(forKey: "joke") {
+                                DispatchQueue.main.async {
+                                    joke = "\(j3)"
+                                }
+                            } else {
+                                print("Error: cannot convert json data")
+                            }
                         }
 
                     }
