@@ -66,6 +66,7 @@ class AuthViewModel: ObservableObject {
                     print("Error fetching favorites: \(error)")
                     completion()
                 } else {
+                    self.favJokes = []
                     for document in snapshot?.documents ?? [] {
                         let data = document.data()
                         if let jokeID = data["id"] as? Int {
@@ -118,9 +119,9 @@ class AuthViewModel: ObservableObject {
 }
 
 class JokeData {
-    
+
     var ref = Database.database().reference()
-    
+
     var ID: Int
     var like: Int
     var dislike: Int
