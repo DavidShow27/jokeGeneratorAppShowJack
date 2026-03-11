@@ -59,9 +59,6 @@ struct UserView: View {
                             }
                         }
                 }
-//                ForEach(jokes, id: \.self) { joke in
-//                        Text(joke)
-//                }
                 
 
             }
@@ -80,6 +77,8 @@ struct UserView: View {
                             }
                         }
                     }
+                    print(auth.favJokes)
+                    
                 }
 
         }
