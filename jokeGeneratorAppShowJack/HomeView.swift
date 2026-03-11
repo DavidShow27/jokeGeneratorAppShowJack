@@ -12,56 +12,56 @@ import SwiftUI
 
 struct HomeView: View {
 
-    var ref = Database.database().reference()
+    var ref = Database.database().reference()  // Reference to Database
 
-    @EnvironmentObject var auth: AuthViewModel
-    @State var jokeData: JokeData = JokeData(
+    @EnvironmentObject var auth: AuthViewModel  // Reference to User / Authenticator
+    @State var jokeData: JokeData = JokeData(  // jokeData instance: Used to get from realtime firebase
         ID: -1,
         like: 0,
         dislike: 0
     )
-    @State var jokeID: Int = 0
-    @State var jokeLikes: Int = 0
-    @State var jokeDislikes: Int = 0
+    @State var jokeID: Int = 0  // ID of the current joke on screen
+    @State var jokeLikes: Int = 0  // Local likes (only changes by user)
+    @State var jokeDislikes: Int = 0  // Local dislike (only changes by user)
 
     @State var liked = false
-    @State var disliked = false
+    @State var disliked = false  // Toggle function for buttons
     @State var saved = false
-    
-    @State var jokeSetup: String = ""
-    @State var jokePunch: String = ""
-    @State var flipped: Bool = false
-    
+
+    @State var jokeSetup: String = ""  // Current Joke setup
+    @State var jokePunch: String = ""  // Current Joke Delivery / Punchline
+    @State var flipped: Bool = false  // if there is both a setup and delivery : can flip the card
+
     var body: some View {
-        
+
         NavigationStack {
-            
+
             VStack(spacing: 20) {
-                
+
                 Text("QuickQuip")
                     //.font(.largeTitle)
                     .font(Font.custom("American Typewriter", size: 72))
-                
+
                 HStack {
-                    
-                    Button{
+                    // Takes user to the login screen
+                    Button {
                         try? auth.signOut()
-                    }label:{
+                    } label: {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
                             .font(.title)
                     }
-                    
+
                     Spacer()
-                    
+                    // Takes user to the leaderboard, which displays the top jokes from all users
                     NavigationLink(destination: {
                         LeaderboardView()
                     }) {
                         Image(systemName: "chart.bar.fill")
                             .font(.title)
                     }
-                    
+
                     Spacer()
-                    
+                    // Takes user to the user screen, where they can see their favorites
                     NavigationLink(destination: {
                         UserView()
                     }) {
@@ -71,124 +71,145 @@ struct HomeView: View {
                     }
                     .disabled(auth.isAnonymous)
 
-                    
                 }
                 .padding()
                 .background(Color.gray.opacity(0.1))
-                
+
                 ZStack {
-                    
-                    RoundedRectangle(cornerRadius: 50)
-                        .glassEffect(in: RoundedRectangle(cornerRadius: 50))
-                    
-                    if flipped{
+
+                    RoundedRectangle(cornerRadius: 50)  // Card itself
+                        .foregroundStyle(.black)
+                        .opacity(0.3)
+                    // Card flipping code if there is a unique setup and punchline
+                    if flipped {
                         Text(jokePunch)
                             .font(.largeTitle)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    }
-                    else{
+                            .rotation3DEffect(
+                                .degrees(180),
+                                axis: (x: 0, y: 1, z: 0)
+                            )
+                    } else {
                         Text(jokeSetup)
                             .font(.largeTitle)
                     }
-                    
+
                 }
                 .frame(maxWidth: 350, maxHeight: 600)
                 .rotation3DEffect(
-                            .degrees(flipped ? 180 : 0),
-                            axis: (x: 0, y: 1, z: 0)
-                        )
+                    .degrees(flipped ? 180 : 0),
+                    axis: (x: 0, y: 1, z: 0)
+                )
                 .animation(.easeInOut(duration: 0.5), value: flipped)
                 .onTapGesture {
-                            flipped.toggle()
-                        }
-                
+                    // Easiest way to check if there's no unique setup or punchline
+                    if jokeSetup != jokePunch {
+                        flipped.toggle()
+                    }
+                }
+
                 HStack(spacing: 20) {
-                    
+
                     VStack {
-                        
+                        // Like button, does the opposite action of dislike
                         Button {
-                            
+
                             if !liked {
-                                jokeLikes += 1
+                                jokeLikes = 1
                                 if disliked {
-                                    jokeDislikes -= 1
+                                    jokeDislikes = -1
                                     disliked = false
                                 }
                                 liked = true
                             } else {
-                                jokeLikes -= 1
+                                jokeLikes = -1
                                 liked = false
                             }
-                            
+
                             let d = [
-                                "id": jokeID, "likes": jokeLikes,
-                                "dislikes": jokeDislikes,
+                                "id": jokeID,
+                                "likes": jokeLikes + jokeData.like,
+                                "dislikes": jokeDislikes + jokeData.dislike,
                             ]
-                            
+
                             jokeData.updateToFirebase(dict: d)
                             
+                            jokeLikes = 0
+                            jokeDislikes = 0
+
                         } label: {
-                            
+
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(liked ? .green : .blue)
-                                Label("Like", systemImage: liked ? "hand.thumbsup.fill" : "hand.thumbsup")
-                                    .foregroundStyle(.white)
+                                Label(
+                                    "Like",
+                                    systemImage: liked
+                                        ? "hand.thumbsup.fill" : "hand.thumbsup"
+                                )
+                                .foregroundStyle(.white)
                             }
                             .frame(maxWidth: 200, maxHeight: 60)
                             .opacity(auth.isAnonymous ? 0.3 : 1)
 
                         }
                         .disabled(auth.isAnonymous)
-                        
-                        
-                        Text("\(jokeLikes)")
-                        
+
+                        Text("\(jokeData.like)")
+
                     }
-                    
+
                     VStack {
-                        
+                        // Dislike button, does the opposite action of like and favorite
                         Button {
-                            
+
                             if !disliked {
-                                jokeDislikes += 1
+                                jokeDislikes = 1
                                 if liked {
-                                    jokeLikes -= 1
+                                    jokeLikes = -1
                                     liked = false
                                 }
                                 disliked = true
                                 saved = false
                             } else {
-                                jokeDislikes -= 1
+                                jokeDislikes = -1
                                 disliked = false
                             }
-                            
+
                             let d = [
-                                "id": jokeID, "likes": jokeLikes,
-                                "dislikes": jokeDislikes,
+                                "id": jokeID,
+                                "likes": jokeLikes + jokeData.like,
+                                "dislikes": jokeDislikes + jokeData.dislike,
                             ]
-                            jokeData.updateToFirebase(dict: d)
-                        } label: {
                             
+                            jokeData.updateToFirebase(dict: d)
+                            
+                            jokeLikes = 0
+                            jokeDislikes = 0
+                        } label: {
+
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundStyle(disliked ? .red : .blue)
-                                Label("Dislike", systemImage: disliked ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                                    .foregroundStyle(.white)
+                                Label(
+                                    "Dislike",
+                                    systemImage: disliked
+                                        ? "hand.thumbsdown.fill"
+                                        : "hand.thumbsdown"
+                                )
+                                .foregroundStyle(.white)
                             }
                             .frame(maxWidth: 200, maxHeight: 60)
                             .opacity(auth.isAnonymous ? 0.3 : 1)
 
                         }
                         .disabled(auth.isAnonymous)
+                        
+                        Text("\(jokeData.dislike)")
 
-                        
-                        Text("\(jokeDislikes)")
-                        
                     }
-                    
+                    // Favorite button, similar to the like button but saves to Firestore
                     Button {
-                        
+
                         if !saved {
                             if disliked {
                                 jokeDislikes -= 1
@@ -198,22 +219,25 @@ struct HomeView: View {
                         } else {
                             saved = false
                         }
-                        
+
                         let d = ["id": jokeID]
-                        
+
                         if saved {
                             auth.addToFavorites(joke: d)
                         } else {
                             auth.removeFromFavorites(joke: d)
                         }
-                        
+
                     } label: {
-                        
+
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundStyle(saved ? .pink : .blue)
-                            Label("Favorite", systemImage: saved ? "heart.fill" : "heart")
-                                .foregroundStyle(.white)
+                            Label(
+                                "Favorite",
+                                systemImage: saved ? "heart.fill" : "heart"
+                            )
+                            .foregroundStyle(.white)
                         }
                         .frame(maxWidth: 200, maxHeight: 60)
                         .opacity(auth.isAnonymous ? 0.3 : 1)
@@ -222,129 +246,72 @@ struct HomeView: View {
 
                     // Fake Spacer()
                     Text("")
-                    
+
                 }
-                
+                // New api call
                 Button("New Joke") {
+
                     liked = false
                     disliked = false
                     saved = false
                     flipped = false
                     jokeLikes = 0
                     jokeDislikes = 0
-                    
+
                     APICalls().getRandomJokeSeparate { js, jd, id in
                         jokeSetup = js
                         jokePunch = jd
                         jokeID = id
+                        
+                        observeDatabase()
+                        
                     }
-                    
+
+                    // Check the user data to check if id is in their favorites, make button true if it does
+
                 }
                 .buttonStyle(.borderedProminent)
-                
+
             }
-            .background (
-                LinearGradient(colors: [.mint, .blue], startPoint: .top, endPoint: .bottom)
+            .background(
+                LinearGradient(
+                    colors: [.mint, .blue],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
             )
         }
         .onAppear {
             flipped = false
-            //getJoke()
-            
-            APICalls().getRandomJokeSeparate{js, jd, id in
+            // Grab joke from an API, in seperate class for cleanliness
+            APICalls().getRandomJokeSeparate { js, jd, id in
                 jokeSetup = js
                 jokePunch = jd
-                
                 jokeID = id
+                
+                // Add listener to Realtime firebase to display global likes and dislikes
+                observeDatabase()
+                
             }
-            
-            observeDatabase()
         }
     }
 
     func observeDatabase() {
-
-        ref.child("Jokes").observe(
-            .childChanged,
-            with: { snapshot in
-
-                let data = snapshot.value as! [String: Any]
-                let j = JokeData(dict: data)
-                j.key = snapshot.key
-
-                // Update the state to trigger a UI update
-                jokeData = j
+        // Get The ID value and observe the other values aswell
+        ref.child("Jokes").child(String(jokeID)).observe(.value, with: { snapshot in
+                DispatchQueue.main.async {
+                    if let data = snapshot.value as? [String: Any] {
+                        let j = JokeData(dict: data)
+                        j.key = snapshot.key
+                        
+                        // Update the state to trigger a UI update
+                        jokeData = j
+                    }
+                }
             }
         )
 
     }
-
-//    func getJoke() {
-//
-//        // creating object of URLSession class to make api call
-//        let session = URLSession.shared
-//
-//        //creating URL for api call (you need your apikey)
-//        // The website has https: if you are not at school.  We delete the s because of the app Transport settings
-//        let weatherURL = URL(
-//            string:
-//                "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
-//        )!
-//
-//        // Making an api call and creating data in the completion handler
-//        let dataTask = session.dataTask(with: weatherURL) {
-//            // completion handler: happens on a different thread, could take time to get data
-//
-//            (data: Data?, response: URLResponse?, error: Error?) in
-//
-//            if let error = error {
-//                print("Error:\n\(error)")
-//            } else {
-//                // if there is data
-//                if let data = data {
-//                    // convert data to json Object
-//                    if let jsonObj = try? JSONSerialization.jsonObject(
-//                        with: data,
-//                        options: .allowFragments
-//                    )
-//                        as? NSDictionary
-//                    {
-//                        // print the jsonObj to see structure
-//                        print(jsonObj)
-//
-//                        if let j1 = jsonObj.value(forKey: "setup") {
-//                            if let j2 = jsonObj.value(forKey: "delivery") {
-//
-//                                DispatchQueue.main.async {
-//                                    jokeSetup = "\(j1)"
-//                                    jokePunch = "\(j2)"
-//                                   
-//                                }
-//
-//                            }
-//                        } else {
-//                            print("Error: unable to convert json data")
-//                        }
-//
-//                        if let jID = jsonObj.value(forKey: "id") {
-//                            DispatchQueue.main.async {
-//
-//                                if let realJID = Int("\(jID)") {
-//                                    jokeID = Int(realJID)
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//                } else {
-//                    print("Error: Can't convert data to json object")
-//                }
-//            }
-//        }
-//
-//        dataTask.resume()
-//
-//    }
 
 }
 #Preview {
