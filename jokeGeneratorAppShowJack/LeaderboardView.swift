@@ -20,7 +20,7 @@ struct LeaderboardView: View {
 
         VStack {
 
-            Text("Top 10 jokes on this app")
+            Text("Top 10 jokes")
                 .font(Font.custom("American Typewriter", size: 48))
                 .multilineTextAlignment(.center)
 
