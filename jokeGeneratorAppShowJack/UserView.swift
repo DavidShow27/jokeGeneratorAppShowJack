@@ -62,6 +62,8 @@ struct UserView: View {
                 
 
             }
+            .listStyle(.insetGrouped)
+            .listRowSpacing(5)
 
         }
         .onAppear {

@@ -41,6 +41,7 @@ struct HomeView: View {
                 Text("QuickQuip")
                     //.font(.largeTitle)
                     .font(Font.custom("American Typewriter", size: 72))
+                    .foregroundStyle(.white)
 
                 HStack {
                     // Takes user to the login screen
@@ -84,6 +85,7 @@ struct HomeView: View {
                     if flipped {
                         Text(jokePunch)
                             .font(.largeTitle)
+                            .foregroundStyle(.white)
                             .rotation3DEffect(
                                 .degrees(180),
                                 axis: (x: 0, y: 1, z: 0)
@@ -91,6 +93,7 @@ struct HomeView: View {
                     } else {
                         Text(jokeSetup)
                             .font(.largeTitle)
+                            .foregroundStyle(.white)
                     }
 
                 }
@@ -137,24 +140,35 @@ struct HomeView: View {
                             jokeDislikes = 0
 
                         } label: {
-
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(liked ? .green : .blue)
-                                Label(
-                                    "Like",
-                                    systemImage: liked
-                                        ? "hand.thumbsup.fill" : "hand.thumbsup"
-                                )
-                                .foregroundStyle(.white)
+                            VStack{
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(liked ? .green : .blue)
+                                    
+                                    VStack{
+                                        
+                                        Label(
+                                            "Like",
+                                            systemImage: liked
+                                            ? "hand.thumbsup.fill" : "hand.thumbsup"
+                                        )
+                                        .foregroundStyle(.white)
+                                        .padding(2)
+                                        
+                                        Text("\(jokeData.like)")
+                                            .foregroundStyle(.white)
+                                    }
+                                }
+                                .frame(maxWidth: 200, maxHeight: 60)
+                                .opacity(auth.isAnonymous ? 0.3 : 1)
+                                
+                                
                             }
-                            .frame(maxWidth: 200, maxHeight: 60)
-                            .opacity(auth.isAnonymous ? 0.3 : 1)
-
                         }
                         .disabled(auth.isAnonymous)
 
-                        Text("\(jokeData.like)")
+                        //Text("\(jokeData.like)")
 
                     }
 
@@ -186,25 +200,33 @@ struct HomeView: View {
                             jokeLikes = 0
                             jokeDislikes = 0
                         } label: {
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(disliked ? .red : .blue)
+                                    VStack{
+                                        Label(
+                                            "Dislike",
+                                            systemImage: disliked
+                                            ? "hand.thumbsdown.fill"
+                                            : "hand.thumbsdown"
+                                        )
+                                        .foregroundStyle(.white)
+                                        .padding(2)
+                                        
+                                        Text("\(jokeData.dislike)")
+                                            .foregroundStyle(.white)
 
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundStyle(disliked ? .red : .blue)
-                                Label(
-                                    "Dislike",
-                                    systemImage: disliked
-                                        ? "hand.thumbsdown.fill"
-                                        : "hand.thumbsdown"
-                                )
-                                .foregroundStyle(.white)
-                            }
-                            .frame(maxWidth: 200, maxHeight: 60)
-                            .opacity(auth.isAnonymous ? 0.3 : 1)
-
+                                    }
+                                }
+                                .frame(maxWidth: 200, maxHeight: 60)
+                                .opacity(auth.isAnonymous ? 0.3 : 1)
+                                
                         }
                         .disabled(auth.isAnonymous)
                         
-                        Text("\(jokeData.dislike)")
+                        //Text("\(jokeData.dislike)")
+                        
 
                     }
                     // Favorite button, similar to the like button but saves to Firestore
@@ -232,7 +254,7 @@ struct HomeView: View {
 
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundStyle(saved ? .pink : .blue)
+                                .foregroundStyle(saved ? Color(red: 1, green: 0.5, blue: 0.9) : .blue)
                             Label(
                                 "Favorite",
                                 systemImage: saved ? "heart.fill" : "heart"
