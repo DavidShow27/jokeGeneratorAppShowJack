@@ -23,10 +23,11 @@ struct UserView: View {
 
         VStack {
 
-            HStack(spacing: 20) {
+            HStack(spacing: 30) {
 
                 Text("QuickQuip")
-                    .font(.largeTitle)
+                    .font(Font.custom("American Typewriter", size: 48))
+                    .foregroundStyle(.white)
 
                 Button("Sign Out") {
                     try? auth.signOut()
@@ -37,41 +38,58 @@ struct UserView: View {
 
             Text("Favorites:")
                 .font(Font.headline.bold())
-            List {
+            
+            ZStack {
                 
-                ForEach(jokes.indices, id:\.self){i in
-                    Text(jokes[i])
-                        .swipeActions {
-                            Button{
-                            
-                                let d = ["id": jokeIDs[i]]
-                             auth.removeFromFavorites(joke: d)
-                                
-                                jokes.remove(at: i)
-                                jokeIDs.remove(at: i)
-                                
-                            }label:{
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .foregroundStyle(.red)
-                                    Text("Remove")
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundStyle(.black)
+                    .opacity(0.3)
+                
+                List {
+                    
+                    ForEach(jokes.indices, id: \.self) { i in
+                        Text(jokes[i])
+                            .swipeActions {
+                                Button{
+                                    
+                                    let d = ["id": jokeIDs[i]]
+                                    auth.removeFromFavorites(joke: d)
+                                    
+                                    jokes.remove(at: i)
+                                    jokeIDs.remove(at: i)
+                                    
+                                }label:{
+                                    ZStack{
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .foregroundStyle(.red)
+                                        Text("Remove")
+                                    }
                                 }
                             }
-                        }
+                    }
+                    
+                    
                 }
+                .scrollContentBackground(.hidden)
+                .listStyle(.insetGrouped)
+                .listRowSpacing(5)
                 
-
             }
-            .listStyle(.insetGrouped)
-            .listRowSpacing(5)
 
         }
+        .background(
+            LinearGradient(
+                colors: [.mint, .blue],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .onAppear {
             
             if let user = auth.user {
                     jokes = []
                     jokeIDs = []
-                    auth.getFavorites(userID: user.uid) {
+                auth.getUserMetaData(userID: user.uid, data: .favorites) {
                         for jID in auth.favJokes {
                             APICalls().getJokeAt(id: jID) { joke in
                                 jokes.append(joke)

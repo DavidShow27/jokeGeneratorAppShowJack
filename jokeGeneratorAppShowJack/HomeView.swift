@@ -245,9 +245,9 @@ struct HomeView: View {
                         let d = ["id": jokeID]
 
                         if saved {
-                            auth.addToFavorites(joke: d)
+                            auth.addToUserMetaData(joke: d, data: .favorites)
                         } else {
-                            auth.removeFromFavorites(joke: d)
+                            auth.removeFromUserMetaData(joke: d, data: .favorites)
                         }
 
                     } label: {

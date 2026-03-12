@@ -21,20 +21,30 @@ struct LeaderboardView: View {
         VStack {
 
             Text("Top 10 jokes")
+                .foregroundStyle(.white)
                 .font(Font.custom("American Typewriter", size: 48))
                 .multilineTextAlignment(.center)
-
-            List {
-                ForEach(Array(jokeWords.indices.prefix(10)), id: \.self) { i in
-                    HStack {
-                        Text(jokeWords[i])
-
-                        Spacer()
-
-                        Text("Likes: \(allJokes[i].like)")
-                        Text("Dislikes: \(allJokes[i].dislike)")
+            
+            ZStack {
+                
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundStyle(.black)
+                    .opacity(0.3)
+                
+                List {
+                    ForEach(Array(jokeWords.indices.prefix(10)), id: \.self) { i in
+                        HStack {
+                            Text(jokeWords[i])
+                            
+                            Spacer()
+                            
+                            Text("Likes: \(allJokes[i].like)")
+                            Text("Dislikes: \(allJokes[i].dislike)")
+                        }
                     }
                 }
+                .scrollContentBackground(.hidden)
+                
             }
 
             Button("hi") {
@@ -46,6 +56,13 @@ struct LeaderboardView: View {
                 }
             }
         }
+        .background(
+            LinearGradient(
+                colors: [.mint, .blue],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .onAppear {
 
             fireBaseStuff()
