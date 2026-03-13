@@ -16,13 +16,10 @@ class AuthViewModel: ObservableObject {
 
     @Published var user: User?
     @Published var isAnonymous = false
-    var favJokes: [Int] = []
     
-    enum UserData: String {
-        case favorites
-        case likes
-        case dislikes
-    }
+    var favJokes: [Int] = []
+    var liked: Bool = false
+    var disliked: Bool = false
 
     private var handle: AuthStateDidChangeListenerHandle?
     private var ref = Firestore.firestore()
@@ -32,7 +29,7 @@ class AuthViewModel: ObservableObject {
             self.user = user
             self.isAnonymous = user?.isAnonymous ?? false
             if let userID = user?.uid {
-                self.getUserMetaData(userID: userID, data: .favorites) {
+                self.getFavorites(userID: userID) {
 
                 }
             }
@@ -65,8 +62,8 @@ class AuthViewModel: ObservableObject {
     }
 
     // Escaping makes it so that everything waits until favorites are completely done loading
-    func getUserMetaData(userID: String, data: UserData, completion: @escaping () -> Void) {
-        ref.collection("users").document(userID).collection(data.rawValue)
+    func getFavorites(userID: String, completion: @escaping () -> Void) {
+        ref.collection("users").document(userID).collection("favorites")
             .getDocuments { (snapshot, error) in
                 if let error = error {
                     print("Error fetching favorites: \(error)")
@@ -84,11 +81,11 @@ class AuthViewModel: ObservableObject {
             }
     }
 
-    func addToUserMetaData(joke: [String: Any], data: UserData) {
+    func addToFavorites(joke: [String: Any]) {
 
         guard let userID = user?.uid else { return }
 
-        let favoriteRef = ref.collection("users").document(userID).collection(data.rawValue).document("\(joke["id"] as! Int)")
+        let favoriteRef = ref.collection("users").document(userID).collection("favorites").document("\(joke["id"] as! Int)")
 
         favoriteRef.setData(joke) { error in
             if let error = error {
@@ -99,11 +96,11 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func removeFromUserMetaData(joke: [String: Any], data: UserData) {
+    func removeFromFavorites(joke: [String: Any]) {
 
         guard let userID = user?.uid else { return }
 
-        let favoriteRef = ref.collection("users").document(userID).collection(data.rawValue).document("\(joke["id"] as! Int)")
+        let favoriteRef = ref.collection("users").document(userID).collection("favorites").document("\(joke["id"] as! Int)")
 
         favoriteRef.delete { error in
             if let error = error {

@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseDatabase
 import FirebaseFirestore
+import FirebaseAuth
 import SwiftUI
 
 struct HomeView: View {
@@ -245,9 +246,9 @@ struct HomeView: View {
                         let d = ["id": jokeID]
 
                         if saved {
-                            auth.addToUserMetaData(joke: d, data: .favorites)
+                            auth.addToFavorites(joke: d)
                         } else {
-                            auth.removeFromUserMetaData(joke: d, data: .favorites)
+                            auth.removeFromFavorites(joke: d)
                         }
 
                     } label: {
@@ -328,6 +329,8 @@ struct HomeView: View {
                         
                         // Update the state to trigger a UI update
                         jokeData = j
+                    } else {
+                        print("Didn't get database")
                     }
                 }
             }

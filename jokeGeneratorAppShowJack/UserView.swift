@@ -89,7 +89,7 @@ struct UserView: View {
             if let user = auth.user {
                     jokes = []
                     jokeIDs = []
-                auth.getUserMetaData(userID: user.uid, data: .favorites) {
+                auth.getFavorites(userID: user.uid) {
                         for jID in auth.favJokes {
                             APICalls().getJokeAt(id: jID) { joke in
                                 jokes.append(joke)
