@@ -320,21 +320,38 @@ struct HomeView: View {
     }
 
     func observeDatabase() {
+        
+        ref.child("Jokes").child(String(jokeID)).keepSynced(true)
+        
         // Get The ID value and observe the other values aswell
         ref.child("Jokes").child(String(jokeID)).observe(.value, with: { snapshot in
                 DispatchQueue.main.async {
+                    
+                    if !snapshot.exists() {
+                        
+                        let d = [
+                            "id": jokeID,
+                            "likes": jokeLikes,
+                            "dislikes": jokeDislikes,
+                        ]
+                        
+                        ref.child("Jokes").child(String(jokeID)).setValue(d)
+                        
+                    }
                     if let data = snapshot.value as? [String: Any] {
                         let j = JokeData(dict: data)
                         j.key = snapshot.key
                         
                         // Update the state to trigger a UI update
                         jokeData = j
-                    } else {
-                        print("Didn't get database")
                     }
                 }
             }
-        )
+        ) { error in
+            
+            print(error.localizedDescription)
+            
+        }
 
     }
 

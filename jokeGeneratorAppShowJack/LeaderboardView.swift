@@ -69,7 +69,7 @@ struct LeaderboardView: View {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
                 
-                allJokes = allJokes.sorted { $0.like > $1.like }
+                allJokes = allJokes.sorted { $0.like - $0.dislike > $1.like - $1.dislike }
 
                 for i in allJokes {
                     APICalls().getJokeAt(id: i.ID) { joke in

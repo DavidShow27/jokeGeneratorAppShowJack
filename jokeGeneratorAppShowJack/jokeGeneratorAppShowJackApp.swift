@@ -15,6 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
         return true
     }
 }
@@ -23,7 +24,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct jokeGeneratorAppShowJack: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
